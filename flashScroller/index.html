@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/default.css">
+<link rel="stylesheet" href="css/index.css">
+
+<title>index</title>
+<script>
+    var elem = document.createElement('meta');
+    var h = window.screen.width/640;
+    elem.name = 'viewport';
+    elem.content = 'width=device-width,user-scalable=no,initial-scale='+h;
+    document.getElementsByTagName('head')[0].appendChild(elem);
+</script>
+
+<script>
+
+
+var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+function init() {
+	canvas = document.getElementById("canvas");
+	anim_container = document.getElementById("animation_container");
+	dom_overlay_container = document.getElementById("dom_overlay_container");
+	var comp=AdobeAn.getComposition("A6884732E68D459480F25FAFF18F0553");
+	var lib=comp.getLibrary();
+	handleComplete({},comp);
+}
+function handleComplete(evt,comp) {
+	var lib=comp.getLibrary();
+	var ss=comp.getSpriteSheet();
+	exportRoot = new lib.main();
+	stage = new lib.Stage(canvas);	
+	// stage = new createjs.StageGL(canvas);//使用webGL渲染	
+	fnStartAnimation = function() {
+		stage.addChild(exportRoot);
+		createjs.Ticker.setFPS(lib.properties.fps);
+		createjs.Ticker.addEventListener("tick", stage);
+	}	    
+	AdobeAn.compositionLoaded(lib.properties.id);
+	fnStartAnimation();
+	scrollInit()
+}
+
+</script>
+<!-- write your code here -->
+</head>
+<body >
+	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:640px; height:1030px">
+		<canvas id="canvas" width="640" height="1030" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:640px; height:1030px; position: absolute; left: 0px; top: 0px; display: block;">
+		</div>
+	</div>
+
+<script src="libs/createjs-1.0.0.min.js"></script>
+<script src="libs/zepto.all.min.js"></script>
+<script src="libs/Scroller.min.js"></script>
+<script src="main.js"></script>
+<script src="js/index.js?111"></script>
+</body>
+</html>
