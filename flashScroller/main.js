@@ -9,17 +9,21 @@ lib.ssMetadata = [];
 
 
 
+(lib.Bitmap1 = function() {
+	this.initialize(img.Bitmap1);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,1238,642);
+
+
 (lib.补间1 = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
 	// 图层_1
-	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#000000").ss(1,1,1).p("Ehgjgx/MDBHAAAMAAABj/MjBHAAAg");
+	this.instance = new lib.Bitmap1();
+	this.instance.parent = this;
+	this.instance.setTransform(-619,-321);
 
-	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#000000").s().p("EhgjAyAMAAAhj/MDBHAAAMAAABj/g");
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(-619,-321,1238,642);
@@ -73,7 +77,7 @@ p.nominalBounds = new cjs.Rectangle(-1,-1,1238,642);
 	this.timeline.addTween(cjs.Tween.get(this.main).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(959.6,514.4,1237,641);
+p.nominalBounds = new cjs.Rectangle(959.1,513.9,1238,642);
 // library properties:
 lib.properties = {
 	id: 'A6884732E68D459480F25FAFF18F0553',
@@ -82,7 +86,9 @@ lib.properties = {
 	fps: 24,
 	color: "#FFFFFF",
 	opacity: 1.00,
-	manifest: [],
+	manifest: [
+		{src:"images/Bitmap1.png?1524725829457", id:"Bitmap1"}
+	],
 	preloads: []
 };
 

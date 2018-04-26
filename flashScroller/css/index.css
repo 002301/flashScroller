@@ -1,4 +1,6 @@
- .music{
+ body,#animation_container{background:#f9f3ee;height: 100%;overflow: hidden;}
+
+.music{
     position: absolute;
     right: 20px;
     top: 20px;

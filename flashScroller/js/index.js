@@ -1,13 +1,66 @@
+let scrollPro =0,movie=0;
+var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+
 $(function(){
-    init();
+    // music()//设置音乐
+    loading();
+    document.body.addEventListener('touchmove', function (e) {
+      e.preventDefault();
+ }, {passive: false});
 })
 
-let scrollPro =0,movie=0;
-
+function loading(){
+    var loadImgsArr=[
+            'images/music.png',
+        ];
+    netease.loading(loadImgsArr,function(){
+        init();
+    });
+}
+function init() {
+    canvas = document.getElementById("canvas");
+    anim_container = document.getElementById("animation_container");
+    dom_overlay_container = document.getElementById("dom_overlay_container");
+    var comp=AdobeAn.getComposition("A6884732E68D459480F25FAFF18F0553");
+    var lib=comp.getLibrary();
+    var loader = new createjs.LoadQueue(false);
+    loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+    loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
+    var lib=comp.getLibrary();
+    loader.loadManifest(lib.properties.manifest);
+}
+function handleFileLoad(evt, comp) {
+    var images=comp.getImages();    
+    if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }    
+}
+function handleComplete(evt,comp) {
+    //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+    var lib=comp.getLibrary();
+    var ss=comp.getSpriteSheet();
+    var queue = evt.target;
+    var ssMetadata = lib.ssMetadata;
+    for(i=0; i<ssMetadata.length; i++) {
+        ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+    }
+    exportRoot = new lib.main();
+    stage = new lib.Stage(canvas);  
+    //Registers the "tick" event listener.
+    fnStartAnimation = function() {
+        stage.addChild(exportRoot);
+        createjs.Ticker.setFPS(lib.properties.fps);
+        createjs.Ticker.addEventListener("tick", stage);
+    }        
+    AdobeAn.compositionLoaded(lib.properties.id);
+    fnStartAnimation();
+    scrollInit()
+}
+//设置滚动
 function scrollInit(){
+    var _totalF = (exportRoot.main.totalFrames-1)*12;
 	scroller = new Scroller(function(left,top,zoom){
 		console.log(scrollPro);
-        scrollPro = (top/8);//减慢滑动
+        scrollPro = (top/12);//减慢滑动
+        // scrollPro = exportRoot.main.totalFrames-1-(top/12);//倒播
         if(scrollPro!=0){
            exportRoot.main.gotoAndStop(scrollPro); 
         }
@@ -16,10 +69,8 @@ function scrollInit(){
         zooming: true,
         bouncing: false
     })
-    contentLength = (exportRoot.main.totalFrames-1)*8;
-    console.log((exportRoot.main.totalFrames-1)*8)
-	scroller.setDimensions(stage.width, stage.height, stage.height, contentLength);
-	
+    scroller.setDimensions(stage.width, stage.height, stage.width, _totalF);
+    // scroller.scrollTo(0,_totalF,false);	//倒播
 	//添加触屏事件
 	var mousedown = false;
     document.addEventListener("touchstart", function(e) {
@@ -44,9 +95,9 @@ function scrollInit(){
         mousedown = false;
     }, false);
 }
-
 // 音乐播放
-function music(s){
+function music(){
+    netease.autoPlay("mp3");//<audio>与<video>标签的id
     var flag = false;
     $(document).bind('touchstart', function(){
         if (!flag) {

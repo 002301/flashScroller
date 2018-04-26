@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/default.css">
 <link rel="stylesheet" href="css/index.css">
-
+<link rel="stylesheet" href="http://go.163.com/web/f2e_common/common/js/loading.css">
 <title>index</title>
 <script>
     var elem = document.createElement('meta');
@@ -13,50 +13,48 @@
     elem.content = 'width=device-width,user-scalable=no,initial-scale='+h;
     document.getElementsByTagName('head')[0].appendChild(elem);
 </script>
-
-<script>
-
-
-var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
-function init() {
-	canvas = document.getElementById("canvas");
-	anim_container = document.getElementById("animation_container");
-	dom_overlay_container = document.getElementById("dom_overlay_container");
-	var comp=AdobeAn.getComposition("A6884732E68D459480F25FAFF18F0553");
-	var lib=comp.getLibrary();
-	handleComplete({},comp);
-}
-function handleComplete(evt,comp) {
-	var lib=comp.getLibrary();
-	var ss=comp.getSpriteSheet();
-	exportRoot = new lib.main();
-	stage = new lib.Stage(canvas);	
-	// stage = new createjs.StageGL(canvas);//使用webGL渲染	
-	fnStartAnimation = function() {
-		stage.addChild(exportRoot);
-		createjs.Ticker.setFPS(lib.properties.fps);
-		createjs.Ticker.addEventListener("tick", stage);
-	}	    
-	AdobeAn.compositionLoaded(lib.properties.id);
-	fnStartAnimation();
-	scrollInit()
-}
-
-</script>
-<!-- write your code here -->
 </head>
 <body >
-	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:640px; height:1030px">
-		<canvas id="canvas" width="640" height="1030" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
-		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:640px; height:1030px; position: absolute; left: 0px; top: 0px; display: block;">
+<div class="netease-loader">
+    <section>
+        <article>
+            <span class="load_type"></span>
+            <span class="load_data"></span>
+            <span class="load_text"></span>
+        </article>
+    </section>
+</div>
+	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:640px; height:1236px">
+		<canvas id="canvas" width="640" height="1236" style="position: absolute; display: block; background-color:#f9f3ee;"></canvas>
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:640px; height:1236px; position: absolute; left: 0px; top: 0px; display: block;">
+		</div>
+		<div class="endPage hide" pop>
+			<div class="close"></div>
 		</div>
 	</div>
-<audio id="all" src="mp3/bgm.mp3" > </audio>
+<!-- <audio id="mp3" src="bgm.mp3" autoplay='autoplay'> </audio> -->
 <div class="music play"><a href="javascript:;"></a></div>
-<script src="libs/createjs-1.0.0.min.js"></script>
-<script src="libs/zepto.all.min.js"></script>
-<script src="libs/Scroller.min.js"></script>
+<script src="http://go.163.com/web/f2e_common/common/js/common.min.js"></script>
+<script src="js/createjs-1.0.0.min.js"></script>
+<script src="js/zepto.all.min.js"></script>
+<script src="js/Scroller.min.js"></script>
 <script src="main.js"></script>
 <script src="js/index.js?111"></script>
+<script>
+    var shareData={
+        MsgImg:'share.jpg',  //分享图片
+        link:'index.html',    //分享链接
+        title:'分享标题',   //分享标题
+        desc:'分享描述',    //分享描述
+        fText:'分享标题',    //分享朋友圈
+        callback:function(){
+            //回调
+            share_survey(true);
+        }
+    };
+    NeteaseShareInit();//用于初始化
+    //NeteaseShare();//用于调用分享
+    //NeteaseShareUpdate();//用于更新
+</script>
 </body>
 </html>
