@@ -4,6 +4,7 @@ var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAni
 $(function(){
     // music()//设置音乐
     loading();
+     window.onorientationchange = hw;
     document.body.addEventListener('touchmove', function (e) {
       e.preventDefault();
  }, {passive: false});
@@ -120,4 +121,54 @@ function music(){
 function stopMusic(){
     $('#mp3')[0].pause();
     $('.music').removeClass("play");
+}
+
+//根据客户端弹出分享
+// sshare(pop($('.end')))
+function sshare(endFunction){
+    var client = /newsapp/i.test(navigator.userAgent);
+    var f = endFunction || function(){};
+    if(client=="neteasenewsapp"){
+        NeteaseShare();
+    }else{
+        f();
+    }
+}
+// pop($('.end'))
+function pop(n,clos){
+    var cl = clos||true; 
+    var div="<div id='pop' pop  class='hide' "
+    if(cl){
+      div +=  "onclick='closePop()'";
+    }
+    div +="><div class='popcont' pop>"
+    div +=$(n).prop("outerHTML");
+    div+="</div><div class='bg'></div>"
+    div+="</div>"
+    $("body").prepend(div);
+    $("#pop").show();
+    //console.log(div);
+}
+//关闭弹层
+function closePop(){
+    $("#pop").remove();
+}
+//横竖屏切换
+function hw(){
+    var _hw = orient()
+    if(_hw){
+        $('.heng').hide();
+    }else{
+        $('.heng').show();
+    }
+}
+
+//判断横竖屏切换
+function orient() {
+    if (window.orientation == 0 || window.orientation == 180) {
+        return true;
+    }
+    else if (window.orientation == 90 || window.orientation == -90) {
+       return false;
+    }
 }
