@@ -68,25 +68,89 @@ p.nominalBounds = new cjs.Rectangle(-1,-1,1238,642);
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// 图层_2
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("#00FF00").s().p("AhIAuQgDgTAAgVQADhzBMgFQAwABASA0IgGABQgPgvgtgBQhGAEgDBuIAAAQQARg2A3gBQBDAFAGBEQgEBHhHAEQg7AAgOhFgAhBAuQAKBAA4AAQBBgDAEhDQgFg+g+gFQhAACgEBHg");
+	this.shape.setTransform(1646,-102.7);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#00FF00").s().p("AhMABQAFhPBHgGQBLAEACBUIiTAAQAGBJBAADQA3gBANgqIAGACQgPAtg7ABQhIgFgEhPgAhGgBICNAAQgEhMhDgBQhAAFgGBIg");
+	this.shape_1.setTransform(1618.2,-99.7);
+
+	this.shape_2 = new cjs.Shape();
+	this.shape_2.graphics.f("#00FF00").s().p("AA8BUIAAhhQgBhBg3AAQg6AGgFBOIAABOIgFAAIAAilIAFAAIAAAzQATg0AsgBQA9AAAABGIAABhg");
+	this.shape_2.setTransform(1598.8,-99.7);
+
+	this.shape_3 = new cjs.Shape();
+	this.shape_3.graphics.f("#00FF00").s().p("AhOABQAIhOBGgIQBIAIAHBOQgHBOhIAGQhHgGgHhOgAhHABQAFBIBCAHQBDgFAFhKQgGhJhCgHQhCAHgFBJg");
+	this.shape_3.setTransform(1579.5,-99.6);
+
+	this.shape_4 = new cjs.Shape();
+	this.shape_4.graphics.f("#00FF00").s().p("AA8ByIAAhjQAAg/g2AAQg8AGgFBOIAABOIgFAAIAAjjIAFAAIAABxQATg0AugCQA7ABAABEIAABjg");
+	this.shape_4.setTransform(1560.1,-102.7);
+
+	this.shape_5 = new cjs.Shape();
+	this.shape_5.graphics.f("#00FF00").s().p("AhFBwIAAjdIAGAAIAAAwQATgxAtgBQBBAFAEBSQgCBShCABQgugBgTgxIAABngAg/gYQAFBJA8AEQA9gBABhMQgEhMg7gFQg8AFgEBMg");
+	this.shape_5.setTransform(1541.5,-97);
+
+	this.shape_6 = new cjs.Shape();
+	this.shape_6.graphics.f("#00FF00").s().p("AgCBzIAAimIAFAAIAACmgAgKhuIAFgEIAQAaIgFADg");
+	this.shape_6.setTransform(1529.1,-102.8);
+
+	this.shape_7 = new cjs.Shape();
+	this.shape_7.graphics.f("#FFFFFF").s().p("AAAABIhZByIgFgEIBchxIhUhsIAEgEIBSBrIBShrIAFAEIhTBsIBbBxIgFAEg");
+	this.shape_7.setTransform(1820.1,-196.7);
+
+	this.shape_8 = new cjs.Shape();
+	this.shape_8.graphics.f("#FFFFFF").s().p("AhMABQAFhPBHgGQBLAEACBUIiTAAQAGBJBAADQA3gBANgqIAGACQgPAtg7ABQhIgFgEhPgAhGgBICNAAQgEhMhDgBQhAAFgGBIg");
+	this.shape_8.setTransform(1800.2,-193.7);
+
+	this.shape_9 = new cjs.Shape();
+	this.shape_9.graphics.f("#FFFFFF").s().p("AA8BUIAAhhQAAhBg3AAQg7AGgFBOIAABOIgFAAIAAilIAFAAIAAAzQATg0AtgBQA8AAAABGIAABhg");
+	this.shape_9.setTransform(1780.8,-193.7);
+
+	this.shape_10 = new cjs.Shape();
+	this.shape_10.graphics.f("#FFFFFF").s().p("AhOABQAHhPBHgGQBHAGAIBPQgHBNhIAIQhIgIgGhNgAhIABQAGBIBCAGQBDgEAFhKQgFhJhDgHQhCAHgGBJg");
+	this.shape_10.setTransform(1761.5,-193.6);
+
+	this.shape_11 = new cjs.Shape();
+	this.shape_11.graphics.f("#FFFFFF").s().p("AA8ByIAAhjQgBg/g1AAQg8AGgFBOIAABOIgFAAIAAjjIAFAAIAABxQATg0AugCQA7ABAABEIAABjg");
+	this.shape_11.setTransform(1742.1,-196.7);
+
+	this.shape_12 = new cjs.Shape();
+	this.shape_12.graphics.f("#FFFFFF").s().p("AhFBwIAAjdIAGAAIAAAwQATgxAtgBQBBAFAEBSQgCBShCABQgugBgTgxIAABngAg/gYQAFBJA8AEQA9gBABhMQgEhMg7gFQg8AFgEBMg");
+	this.shape_12.setTransform(1723.5,-191);
+
+	this.shape_13 = new cjs.Shape();
+	this.shape_13.graphics.f("#FFFFFF").s().p("AgCBzIAAimIAFAAIAACmgAgKhuIAEgEIARAaIgFADg");
+	this.shape_13.setTransform(1711.1,-196.8);
+
 	this.main = new lib.元件1();
 	this.main.name = "main";
 	this.main.parent = this;
 	this.main.setTransform(640,0.1,1,1,0,0,0,-0.1,0.1);
 
-	this.timeline.addTween(cjs.Tween.get(this.main).wait(1));
+	this.shape_14 = new cjs.Shape();
+	this.shape_14.graphics.f().s("#99FF00").ss(1,1,1).p("EhQjAAAMChHAAA");
+	this.shape_14.setTransform(1154.8,-139);
+
+	this.shape_15 = new cjs.Shape();
+	this.shape_15.graphics.f().s("#FFFFFF").ss(1,1,1).p("EhgqgATMDBVAAn");
+	this.shape_15.setTransform(1257.8,-166);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_15},{t:this.shape_14},{t:this.main},{t:this.shape_13},{t:this.shape_12},{t:this.shape_11},{t:this.shape_10},{t:this.shape_9},{t:this.shape_8},{t:this.shape_7},{t:this.shape_6},{t:this.shape_5},{t:this.shape_4},{t:this.shape_3},{t:this.shape_2},{t:this.shape_1},{t:this.shape}]}).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(959.1,514,1238,642);
+p.nominalBounds = new cjs.Rectangle(958.2,301.1,1239.3,854.9);
 // library properties:
 lib.properties = {
 	id: 'A6884732E68D459480F25FAFF18F0553',
 	width: 640,
 	height: 1030,
 	fps: 24,
-	color: "#FFFFFF",
+	color: "#000000",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/Bitmap2.png?1527668136331", id:"Bitmap2"}
+		{src:"images/Bitmap2.png?1527670020138", id:"Bitmap2"}
 	],
 	preloads: []
 };
