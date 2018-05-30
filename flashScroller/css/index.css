@@ -1,4 +1,3 @@
- body,#animation_container{background:#f9f3ee;height: 100%;overflow: hidden;}
 
 .music{
     position: absolute;
@@ -11,4 +10,11 @@
         }
 .music.play{
   -webkit-animation: rotate 3s infinite linear;animation: rotate 3s infinite linear;
+}
+/*旋转*/
+@-webkit-keyframes rotate {
+  100%{
+    -webkit-transform: rotateZ(360deg);
+    transform: rotateZ(360deg);
+  }
 }

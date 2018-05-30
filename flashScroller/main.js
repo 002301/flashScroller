@@ -9,8 +9,8 @@ lib.ssMetadata = [];
 
 
 
-(lib.Bitmap1 = function() {
-	this.initialize(img.Bitmap1);
+(lib.Bitmap2 = function() {
+	this.initialize(img.Bitmap2);
 }).prototype = p = new cjs.Bitmap();
 p.nominalBounds = new cjs.Rectangle(0,0,1238,642);
 
@@ -19,7 +19,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,1238,642);
 	this.initialize(mode,startPosition,loop,{});
 
 	// 图层_1
-	this.instance = new lib.Bitmap1();
+	this.instance = new lib.Bitmap2();
 	this.instance.parent = this;
 	this.instance.setTransform(-619,-321);
 
@@ -60,7 +60,6 @@ p.nominalBounds = new cjs.Rectangle(-1,-1,1238,642);
 		//开启鼠标事件，高度自适应
 		createjs.Touch.enable(stage);
 		this.stop();
-		stage.root=this;
 		this.main.rotation = 90;
 		var _this =this;
 	}
@@ -72,12 +71,12 @@ p.nominalBounds = new cjs.Rectangle(-1,-1,1238,642);
 	this.main = new lib.元件1();
 	this.main.name = "main";
 	this.main.parent = this;
-	this.main.setTransform(640,0,1,1,0,0,0,-0.1,0.1);
+	this.main.setTransform(640,0.1,1,1,0,0,0,-0.1,0.1);
 
 	this.timeline.addTween(cjs.Tween.get(this.main).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(959.1,513.9,1238,642);
+p.nominalBounds = new cjs.Rectangle(959.1,514,1238,642);
 // library properties:
 lib.properties = {
 	id: 'A6884732E68D459480F25FAFF18F0553',
@@ -87,7 +86,7 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/Bitmap1.png?1524725829457", id:"Bitmap1"}
+		{src:"images/Bitmap2.png?1527668136331", id:"Bitmap2"}
 	],
 	preloads: []
 };

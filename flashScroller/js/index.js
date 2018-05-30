@@ -1,23 +1,34 @@
 let scrollPro =0,movie=0;
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
 
+//加载声音
+var sounds={
+    p0:new Howl({loop:true,src: ['bgm.mp3']}),
+}
+
 $(function(){
-    // music()//设置音乐
+    
     loading();
      window.onorientationchange = hw;
     document.body.addEventListener('touchmove', function (e) {
       e.preventDefault();
  }, {passive: false});
+    music()//设置音乐
 })
-
+//图片加载
 function loading(){
     var loadImgsArr=[
             'images/music.png',
         ];
+    var anList = AdobeAn.getComposition("A6884732E68D459480F25FAFF18F0553").getLibrary();
+    for(var i in anList.properties.manifest){
+        loadImgsArr.push(anList.properties.manifest[i].src);
+    }
     netease.loading(loadImgsArr,function(){
         init();
     });
 }
+// flash初始化
 function init() {
     canvas = document.getElementById("canvas");
     anim_container = document.getElementById("animation_container");
@@ -30,12 +41,13 @@ function init() {
     var lib=comp.getLibrary();
     loader.loadManifest(lib.properties.manifest);
 }
+
 function handleFileLoad(evt, comp) {
     var images=comp.getImages();    
     if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }    
 }
+// flash加载完成
 function handleComplete(evt,comp) {
-    //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
     var lib=comp.getLibrary();
     var ss=comp.getSpriteSheet();
     var queue = evt.target;
@@ -65,6 +77,10 @@ function scrollInit(){
         if(scrollPro!=0){
            exportRoot.main.gotoAndStop(scrollPro); 
         }
+        // 制定位置播放声音
+        // if(scrollPro>213&&scrollPro<218){
+        //    playS('p1')
+        // }
 
 	},{
         zooming: true,
@@ -96,32 +112,34 @@ function scrollInit(){
         mousedown = false;
     }, false);
 }
+// 使用howler框架播放音乐
+// playS('p0')
+function playS(s){
+    var pls = sounds[s].playing();
+    if(!pls){
+      sounds[s].play();  
+    }
+}
 // 音乐播放
 function music(){
-    netease.autoPlay("mp3");//<audio>与<video>标签的id
-    var flag = false;
-    $(document).bind('touchstart', function(){
-        if (!flag) {
-          $('#mp3')[0].play();
-          $('.music').addClass("play");
-          flag = true;
-        }
-    });
+    sounds.p0.play();
     $('.music').click(function(){
-      if(!$('#mp3')[0].paused){
-           $('#mp3')[0].pause();
+        let _state = sounds.p0.playing()
+      if(_state){
+           sounds.p0.pause()
            $('.music').removeClass("play");
         }else{
-            $('#mp3')[0].play();
+            sounds.p0.play();
             $('.music').addClass("play");
         }
     });
 }
 
 function stopMusic(){
-    $('#mp3')[0].pause();
+    sounds.p0.pause();
     $('.music').removeClass("play");
 }
+
 
 //根据客户端弹出分享
 // sshare(pop($('.end')))
